@@ -1,19 +1,26 @@
 const withLess = require("@zeit/next-less");
-module.exports = withLess({
-  webpack(config, options) {
-    config.module.rules.push({
-      test: /.less/,
-      use: [
-        {
-          loader: "less-loader",
-          options: {
-            lessOptions: {
-              javascriptEnabled: true,
+const withCSS = require("@zeit/next-css");
+const withSass = require("@zeit/next-sass");
+
+module.exports = withCSS(
+  withSass(
+    withLess({
+      webpack(config) {
+        config.module.rules.push({
+          test: /.less/,
+          use: [
+            {
+              loader: "less-loader",
+              options: {
+                lessOptions: {
+                  javascriptEnabled: true,
+                },
+              },
             },
-          },
-        },
-      ],
-    });
-    return config;
-  },
-});
+          ],
+        });
+        return config;
+      },
+    })
+  )
+);
