@@ -8,6 +8,7 @@ module.exports = withCSS(
       webpack(config) {
         config.module.rules.push({
           test: /.less/,
+          exclude: /node_modules/,
           use: [
             {
               loader: "less-loader",
