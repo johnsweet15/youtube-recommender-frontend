@@ -15,13 +15,8 @@ import "./index.scss";
 export default function Login() {
   const onFinish = async (values) => {
     const { username, password } = values;
-    let loginRes = await loginService.login({ username, password });
-    console.log(loginRes);
-    if (loginRes.ok) {
-      message.success("Logged in");
-    } else {
-      message.error(loginRes);
-    }
+    let loginRes = loginService.login({ username, password });
+    console.log(loginRes.response);
   };
 
   return (

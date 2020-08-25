@@ -1,0 +1,1 @@
+{"ast":null,"code":"import service from \"./service\";\nimport appconfig from \"../config/appconfig\";\n\nclass LoginService {\n  async login(data) {\n    return service.post(appconfig.serviceEndpoint + \"/login/login\", data);\n  }\n\n}\n\nconst loginService = new LoginService();\nexport default loginService;","map":null,"metadata":{},"sourceType":"module"}
