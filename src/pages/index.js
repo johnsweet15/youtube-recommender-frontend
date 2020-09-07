@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button, Card, Image, Tag, Input } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
-import youtubeDataService from "../services/youtube-data";
+import youtubeChannelService from "../services/youtube-channel";
 import tags from "../util/tags";
 import "./index.scss";
 
@@ -15,11 +15,11 @@ export default function Home() {
   const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
-    // getChannel();
+    getChannel();
   }, []);
 
   async function getChannel() {
-    let response = await youtubeDataService.getChannel();
+    let response = await youtubeChannelService.getRandomChannel();
     setChannel(response.data);
   }
 
@@ -51,7 +51,7 @@ export default function Home() {
   const addNewTag = (
     <Tag
       className="site-tag-plus cursor-pointer"
-      onClick={() => setShowInput(!showInput)}
+      onClick={() => setShowInput(true)}
     >
       <PlusOutlined /> New Tag
     </Tag>
@@ -75,6 +75,7 @@ export default function Home() {
         {!showInput && addNewTag}
         {showInput && (
           <Input
+            autoFocus
             type="text"
             size="small"
             className="tag-input"

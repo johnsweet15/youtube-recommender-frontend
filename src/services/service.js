@@ -20,6 +20,14 @@ const serviceUtil = {
       message.error(error?.response?.data?.error);
     });
   },
+  put: function put(url, data, config) {
+    return new Promise(async (res, rej) => {
+      let response = await service.put(url, data, config);
+      res(response);
+    }).catch((error) => {
+      message.error(error?.response?.data?.error);
+    });
+  },
 };
 
 export default serviceUtil;
