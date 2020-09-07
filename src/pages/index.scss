@@ -1,0 +1,14 @@
+.inner-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-bottom: 2rem;
+}
+
+.thumbnail {
+  margin-right: 2rem;
+}
+
+.tag-input {
+  max-width: 200px;
+}
